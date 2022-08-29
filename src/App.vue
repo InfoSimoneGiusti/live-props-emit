@@ -1,28 +1,35 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <MyEmail :email="emailCasuale" />
+    <MyEmailGenerator @generaEmailCasuale="setEmail" />
   </div>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+import MyEmail from './components/MyEmail.vue';
+import MyEmailGenerator from './components/MyEmailGenerator.vue';
 
 export default {
   name: 'App',
   components: {
-    HelloWorld
+    MyEmail,
+    MyEmailGenerator
+    
+  },
+  data() {
+    return {
+      emailCasuale: 'info@pippo.com'
+    }
+  },
+  methods: {
+    setEmail(email) {
+      this.emailCasuale = email;
+    }
   }
 }
 </script>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
+
+
 </style>
